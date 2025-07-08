@@ -151,14 +151,26 @@
                                 <rect key="frame" x="50" y="174" width="275" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nameTextFieldEditChanged:" destination="y8Z-5K-ukQ" eventType="editingChanged" id="gRq-9y-rPU"/>
+                                </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxI-Ww-HMa">
+                                <rect key="frame" x="50" y="216" width="275" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="caR-hG-ERe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bxI-Ww-HMa" firstAttribute="leading" secondItem="caR-hG-ERe" secondAttribute="leading" constant="50" id="241-Ld-xtH"/>
+                            <constraint firstItem="caR-hG-ERe" firstAttribute="trailing" secondItem="bxI-Ww-HMa" secondAttribute="trailing" constant="50" id="5Gx-Zq-nih"/>
                             <constraint firstItem="caR-hG-ERe" firstAttribute="trailing" secondItem="t1X-OY-fwU" secondAttribute="trailing" constant="50" id="5J5-o0-WU8"/>
                             <constraint firstItem="t1X-OY-fwU" firstAttribute="top" secondItem="caR-hG-ERe" secondAttribute="top" constant="30" id="Cmy-dK-J6i"/>
                             <constraint firstItem="t1X-OY-fwU" firstAttribute="leading" secondItem="caR-hG-ERe" secondAttribute="leading" constant="50" id="G3S-Q6-GDW"/>
+                            <constraint firstItem="bxI-Ww-HMa" firstAttribute="top" secondItem="t1X-OY-fwU" secondAttribute="bottom" constant="8" id="tjN-Lm-KW5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yEr-dr-5xn">
@@ -171,6 +183,7 @@
                     <connections>
                         <outlet property="profileNameTextField" destination="t1X-OY-fwU" id="pqM-zQ-QDz"/>
                         <outlet property="saveProfileRightBarButton" destination="e1Y-51-1gX" id="YUY-y2-NQX"/>
+                        <outlet property="validTextLabel" destination="bxI-Ww-HMa" id="n1A-kP-euL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HgX-6g-1na" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
