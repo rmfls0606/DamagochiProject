@@ -162,7 +162,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yEr-dr-5xn">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="e1Y-51-1gX"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="e1Y-51-1gX">
+                            <connections>
+                                <action selector="saveDamagochiNameButtonClicked:" destination="y8Z-5K-ukQ" id="oJ5-4P-xSS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="profileNameTextField" destination="t1X-OY-fwU" id="pqM-zQ-QDz"/>
@@ -211,7 +215,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="d8w-co-pQw"/>
+        <segue reference="tSS-0Y-myH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bubble" width="222" height="142"/>

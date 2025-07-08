@@ -7,6 +7,46 @@
 
 import UIKit
 
+class Damagochi{
+    let userDefaults = UserDefaults.standard
+    
+    var name: String{
+        if let value = userDefaults.string(forKey: "name"){
+            return value
+        }else{
+            userDefaults.setValue("대장", forKey: "name")
+            return "대장"
+        }
+    }
+    
+    var level: Int{
+        get{
+            return userDefaults.integer(forKey: "level")
+        }
+        set{
+            userDefaults.setValue(newValue, forKey: "level")
+        }
+    }
+    
+    var riceCount: Int{
+        get{
+            return userDefaults.integer(forKey: "rice")
+        }
+        set{
+            userDefaults.setValue(newValue, forKey: "rice")
+        }
+    }
+    
+    var waterCount: Int{
+        get{
+            return userDefaults.integer(forKey: "water")
+        }
+        set{
+            return userDefaults.setValue(newValue, forKey: "water")
+        }
+    }
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var damagochiBubbleImageView: UIImageView!
@@ -19,11 +59,18 @@ class ViewController: UIViewController {
     @IBOutlet var eatButtons: [UIButton]!
     @IBOutlet weak var EditProfileBarButton: UIBarButtonItem!
     
+    var damagochi = Damagochi()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configure()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateDamagochi()
     }
     
     private func configure(){
@@ -80,7 +127,17 @@ class ViewController: UIViewController {
         button.configuration = config
         button.layer.borderColor = UIColor.darkGray.cgColor
         button.layer.borderWidth = 1.0
-        button.layer.cornerRadius = 5   
+        button.layer.cornerRadius = 5
+    }
+    
+    func updateDamagochi(){
+        let user = self.damagochi
+        title = "\(user.name)님의 다마고치"
+        let level = user.level
+        let riceCount = user.riceCount
+        let waterCount = user.waterCount
+        damagochiInfoLabel.text = "LV\(level) · 밥알\(riceCount)개 · 물방울 \(waterCount)개"
+        
     }
 }
 
