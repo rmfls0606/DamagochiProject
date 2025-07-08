@@ -92,7 +92,6 @@ class ViewController: UIViewController {
         damagochiTextLabel.numberOfLines = 0
         damagochiTextLabel.textAlignment = .center
         
-        damagochiImageView.image = UIImage._2_1
         damagochiBubbleImageView.contentMode = .scaleToFill
         
         damagochiNameView.backgroundColor = UIColor.background
@@ -139,6 +138,7 @@ class ViewController: UIViewController {
         let riceCount = user.riceCount
         let waterCount = user.waterCount
         damagochiInfoLabel.text = "LV\(level) · 밥알\(riceCount)개 · 물방울 \(waterCount)개"
+        damagochiImageView.image = UIImage(named: "2-\(min(level, 9))")
     }
     
     func showAlert(title: String, message: String){
