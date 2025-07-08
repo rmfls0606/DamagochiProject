@@ -159,7 +159,7 @@ class ViewController: UIViewController {
     
     func levelUp(){
         let exp = ((self.damagochi.riceCount / 5) + (
-            self.damagochi.waterCount
+            self.damagochi.waterCount / 2
         )) / 10
         self.damagochi.level = min(max(1, exp), 10)
     }
