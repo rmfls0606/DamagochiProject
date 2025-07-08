@@ -74,8 +74,6 @@ class ViewController: UIViewController {
     }
     
     private func configure(){
-        
-        title = "대장님의 다마고치"
         view.backgroundColor = UIColor.background
         
         EditProfileBarButton.image = UIImage(systemName: "person.crop.circle")?
@@ -87,6 +85,7 @@ class ViewController: UIViewController {
         
         damagochiTextLabel.text = "대장님 오늘 깃허브 푸시 하셨어요?"
         damagochiTextLabel.numberOfLines = 0
+        damagochiTextLabel.textAlignment = .center
         
         damagochiImageView.image = UIImage._2_1
         damagochiBubbleImageView.contentMode = .scaleToFill
@@ -97,8 +96,6 @@ class ViewController: UIViewController {
         damagochiNameView.layer.cornerRadius = 5
         
         damagochiNameLabel.text = "방실방실 다마고치"
-        
-        damagochiInfoLabel.text = "LV4 · 밥알 74개 · 물방울 57개"
         
         textFieldStyle(textField: inputTextFields[0], placeholder: "밥주세용")
         textFieldStyle(textField: inputTextFields[1], placeholder: "물주세용")
@@ -137,7 +134,58 @@ class ViewController: UIViewController {
         let riceCount = user.riceCount
         let waterCount = user.waterCount
         damagochiInfoLabel.text = "LV\(level) · 밥알\(riceCount)개 · 물방울 \(waterCount)개"
+    }
+    
+    @IBAction func eatButtonClicked(_ sender: UIButton) {
+        guard let text = inputTextFields[sender.tag].text, !text.isEmpty else {
+            if sender.tag == 0{
+                self.damagochi.riceCount += 1
+            }else{
+                self.damagochi.waterCount += 1
+            }
+            //잘 먹었다는 문구 보여주기
+            updateDamagochi()
+            return
+        }
         
+        guard let intValue = Int(text) else {
+            showAlert(title: "실패", message: "질못된 형식의 값을 입력하였습니다.")
+            return
+        }
+        
+        //밥먹기
+        if sender.tag == 0{
+            if intValue > 99{
+                damagochiTextLabel.text = "\(damagochi.name)님 한번에 \(intValue)개의 밥은 먹을 수가 없어요.."
+                return
+            }else{
+                // TODO: 잘 먹었다는 문구 보여주기
+                self.damagochi.riceCount += intValue
+            }
+        }else if sender.tag == 1{
+            if intValue > 49{
+                damagochiTextLabel.text = "\(damagochi.name)님 한번에 \(intValue)개의 물은 마실 수가 없어요.."
+                return
+            }else{
+                // TODO: 잘 마셨다는 문구 보여주기
+                self.damagochi.waterCount += intValue
+            }
+        }
+        
+        updateDamagochi()
+    }
+    
+    func showAlert(title: String, message: String){
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let check = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(check)
+        
+        self.present(alert, animated: true)
     }
 }
 
