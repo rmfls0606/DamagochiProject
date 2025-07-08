@@ -21,7 +21,12 @@ class Damagochi{
     
     var level: Int{
         get{
-            return userDefaults.integer(forKey: "level")
+            if userDefaults.object(forKey: "level") == nil{
+                userDefaults.setValue(1, forKey: "level")
+                return 1
+            }else{
+                return userDefaults.integer(forKey: "level")
+            }
         }
         set{
             userDefaults.setValue(newValue, forKey: "level")
@@ -136,6 +141,26 @@ class ViewController: UIViewController {
         damagochiInfoLabel.text = "LV\(level) · 밥알\(riceCount)개 · 물방울 \(waterCount)개"
     }
     
+    func showAlert(title: String, message: String){
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let check = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(check)
+        
+        self.present(alert, animated: true)
+    }
+    
+    func levelUp(){
+        let exp = ((self.damagochi.riceCount / 5) + (
+            self.damagochi.waterCount
+        )) / 10
+        self.damagochi.level = min(max(1, exp), 10)
+    }
+
     @IBAction func eatButtonClicked(_ sender: UIButton) {
         guard let text = inputTextFields[sender.tag].text, !text.isEmpty else {
             if sender.tag == 0{
@@ -143,6 +168,7 @@ class ViewController: UIViewController {
             }else{
                 self.damagochi.waterCount += 1
             }
+            levelUp()
             //잘 먹었다는 문구 보여주기
             updateDamagochi()
             return
@@ -172,20 +198,8 @@ class ViewController: UIViewController {
             }
         }
         
+        levelUp()
         updateDamagochi()
-    }
-    
-    func showAlert(title: String, message: String){
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        
-        let check = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(check)
-        
-        self.present(alert, animated: true)
     }
 }
 
