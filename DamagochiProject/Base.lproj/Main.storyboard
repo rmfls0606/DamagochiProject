@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="1057.2519083969464" y="-27.464788732394368"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Profile View Controller-->
         <scene sceneID="lu6-Zx-Imz">
             <objects>
-                <viewController id="y8Z-5K-ukQ" sceneMemberID="viewController">
+                <viewController id="y8Z-5K-ukQ" customClass="EditProfileViewController" customModule="DamagochiProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7My-FF-MFa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,6 +164,10 @@
                     <navigationItem key="navigationItem" id="yEr-dr-5xn">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="e1Y-51-1gX"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="profileNameTextField" destination="t1X-OY-fwU" id="pqM-zQ-QDz"/>
+                        <outlet property="saveProfileRightBarButton" destination="e1Y-51-1gX" id="YUY-y2-NQX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HgX-6g-1na" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -207,7 +211,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tSS-0Y-myH"/>
+        <segue reference="d8w-co-pQw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bubble" width="222" height="142"/>
