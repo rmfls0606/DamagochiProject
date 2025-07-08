@@ -66,6 +66,8 @@ class ViewController: UIViewController {
     
     var damagochi = Damagochi()
     
+    let damagochiMessage: [String] = ["배고파요.. 밥 주세요!", "밥 먹을 시간이에요!", "목이 너무 말라요.. 물 주세요!", "물 한잔만 주세요!", "오늘 깃허브 푸시 하셨어요?", "블로그 작성하셨어요?", "공부는 하고 계신가요?", "오늘 하루 코딩 열심히 해봐요!"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -88,7 +90,6 @@ class ViewController: UIViewController {
         
         damagochiBubbleImageView.image = UIImage.bubble
         
-        damagochiTextLabel.text = "대장님 오늘 깃허브 푸시 하셨어요?"
         damagochiTextLabel.numberOfLines = 0
         damagochiTextLabel.textAlignment = .center
         
@@ -137,6 +138,8 @@ class ViewController: UIViewController {
         let level = user.level
         let riceCount = user.riceCount
         let waterCount = user.waterCount
+        let message = damagochiMessage.randomElement() ?? "안녕하세요!"
+        damagochiTextLabel.text = "\(user.name)님, \(message)"
         damagochiInfoLabel.text = "LV\(level) · 밥알\(riceCount)개 · 물방울 \(waterCount)개"
         damagochiImageView.image = UIImage(named: "2-\(min(level, 9))")
     }
@@ -185,7 +188,6 @@ class ViewController: UIViewController {
                 damagochiTextLabel.text = "\(damagochi.name)님 한번에 \(intValue)개의 밥은 먹을 수가 없어요.."
                 return
             }else{
-                // TODO: 잘 먹었다는 문구 보여주기
                 self.damagochi.riceCount += intValue
             }
         }else if sender.tag == 1{
@@ -193,7 +195,6 @@ class ViewController: UIViewController {
                 damagochiTextLabel.text = "\(damagochi.name)님 한번에 \(intValue)개의 물은 마실 수가 없어요.."
                 return
             }else{
-                // TODO: 잘 마셨다는 문구 보여주기
                 self.damagochi.waterCount += intValue
             }
         }
