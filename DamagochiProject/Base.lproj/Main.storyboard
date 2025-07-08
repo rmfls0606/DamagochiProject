@@ -114,7 +114,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="OJP-w0-hUT">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Tym-6p-rfc"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="Tym-6p-rfc">
+                            <connections>
+                                <segue destination="y8Z-5K-ukQ" kind="show" id="tSS-0Y-myH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -135,6 +139,36 @@
             </objects>
             <point key="canvasLocation" x="1057.2519083969464" y="-27.464788732394368"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="lu6-Zx-Imz">
+            <objects>
+                <viewController id="y8Z-5K-ukQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7My-FF-MFa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1X-OY-fwU">
+                                <rect key="frame" x="50" y="174" width="275" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="caR-hG-ERe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="caR-hG-ERe" firstAttribute="trailing" secondItem="t1X-OY-fwU" secondAttribute="trailing" constant="50" id="5J5-o0-WU8"/>
+                            <constraint firstItem="t1X-OY-fwU" firstAttribute="top" secondItem="caR-hG-ERe" secondAttribute="top" constant="30" id="Cmy-dK-J6i"/>
+                            <constraint firstItem="t1X-OY-fwU" firstAttribute="leading" secondItem="caR-hG-ERe" secondAttribute="leading" constant="50" id="G3S-Q6-GDW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="yEr-dr-5xn">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="e1Y-51-1gX"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HgX-6g-1na" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1057" y="678"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="XaB-z4-5Hc">
             <objects>
@@ -153,7 +187,28 @@
             </objects>
             <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5mT-vL-sr6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0rd-4Z-WYJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h1Q-ea-rdx">
+                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="y8Z-5K-ukQ" kind="relationship" relationship="rootViewController" id="d8w-co-pQw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c5H-R4-pqF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130" y="678"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tSS-0Y-myH"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bubble" width="222" height="142"/>
         <systemColor name="systemBackgroundColor">

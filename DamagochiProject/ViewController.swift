@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     }
     
     private func configure(){
+        
         title = "대장님의 다마고치"
         view.backgroundColor = UIColor.background
         
@@ -79,8 +80,7 @@ class ViewController: UIViewController {
         button.configuration = config
         button.layer.borderColor = UIColor.darkGray.cgColor
         button.layer.borderWidth = 1.0
-        button.layer.cornerRadius = 5
-        
+        button.layer.cornerRadius = 5   
     }
 }
 
