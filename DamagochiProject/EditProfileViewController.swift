@@ -21,11 +21,10 @@ class EditProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let name = UserDefaults.standard.string(forKey: "name"){
-            title = "\(name)님의 이름 정하기"
-        }else{
-            title = "대장님의 이름 정하기"
-        }
+        
+        let name = UserDefaults.standard.string(forKey: "name") ?? "대장"
+        title = "\(name)님의 이름 정하기"
+        profileNameTextField.text = name        
     }
     
     private func configure(){
