@@ -202,5 +202,9 @@ class ViewController: UIViewController {
         levelUp()
         updateDamagochi()
     }
+    
+    @IBAction func viewTapGestureTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
 }
 

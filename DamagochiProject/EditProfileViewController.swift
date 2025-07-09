@@ -24,7 +24,7 @@ class EditProfileViewController: UIViewController {
         
         let name = UserDefaults.standard.string(forKey: "name") ?? "대장"
         title = "\(name)님의 이름 정하기"
-        profileNameTextField.text = name        
+        profileNameTextField.text = name
     }
     
     private func configure(){
@@ -64,5 +64,10 @@ class EditProfileViewController: UIViewController {
     @IBAction func saveDamagochiNameButtonClicked(_ sender: UIBarButtonItem) {
         UserDefaults.standard.set(profileNameTextField.text, forKey: "name")
         self.navigationController?.popViewController(animated: true)
-    }    
+    }
+    
+    @IBAction func viewTapGesture(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
 }
