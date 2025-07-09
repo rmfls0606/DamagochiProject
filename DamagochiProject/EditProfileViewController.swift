@@ -12,6 +12,7 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var profileNameTextField: UITextField!
     @IBOutlet weak var saveProfileRightBarButton: UIBarButtonItem!
     @IBOutlet weak var validTextLabel: UILabel!
+    @UserDefault(key: .name, defaultValue: "대장") private var name: String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +22,6 @@ class EditProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let name = UserDefaults.standard.string(forKey: "name") ?? "대장"
         title = "\(name)님의 이름 정하기"
         profileNameTextField.text = name
     }

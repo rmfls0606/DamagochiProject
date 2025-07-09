@@ -7,51 +7,6 @@
 
 import UIKit
 
-class Damagochi{
-    let userDefaults = UserDefaults.standard
-    
-    var name: String{
-        if let value = userDefaults.string(forKey: "name"){
-            return value
-        }else{
-            userDefaults.setValue("대장", forKey: "name")
-            return "대장"
-        }
-    }
-    
-    var level: Int{
-        get{
-            if userDefaults.object(forKey: "level") == nil{
-                userDefaults.setValue(1, forKey: "level")
-                return 1
-            }else{
-                return userDefaults.integer(forKey: "level")
-            }
-        }
-        set{
-            userDefaults.setValue(newValue, forKey: "level")
-        }
-    }
-    
-    var riceCount: Int{
-        get{
-            return userDefaults.integer(forKey: "rice")
-        }
-        set{
-            userDefaults.setValue(newValue, forKey: "rice")
-        }
-    }
-    
-    var waterCount: Int{
-        get{
-            return userDefaults.integer(forKey: "water")
-        }
-        set{
-            return userDefaults.setValue(newValue, forKey: "water")
-        }
-    }
-}
-
 class ViewController: UIViewController {
 
     @IBOutlet weak var damagochiBubbleImageView: UIImageView!
@@ -64,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet var eatButtons: [UIButton]!
     @IBOutlet weak var EditProfileBarButton: UIBarButtonItem!
     
-    var damagochi = Damagochi()
+    var tamagotchi = Tamagotchi()
     
     let damagochiMessage: [String] = ["배고파요.. 밥 주세요!", "밥 먹을 시간이에요!", "목이 너무 말라요.. 물 주세요!", "물 한잔만 주세요!", "오늘 깃허브 푸시 하셨어요?", "블로그 작성하셨어요?", "공부는 하고 계신가요?", "오늘 하루 코딩 열심히 해봐요!"]
     
@@ -133,7 +88,7 @@ class ViewController: UIViewController {
     }
     
     func updateDamagochi(){
-        let user = self.damagochi
+        let user = self.tamagotchi
         title = "\(user.name)님의 다마고치"
         let level = user.level
         let riceCount = user.riceCount
@@ -158,18 +113,18 @@ class ViewController: UIViewController {
     }
     
     func levelUp(){
-        let exp = ((self.damagochi.riceCount / 5) + (
-            self.damagochi.waterCount / 2
+        let exp = ((self.tamagotchi.riceCount / 5) + (
+            self.tamagotchi.waterCount / 2
         )) / 10
-        self.damagochi.level = min(max(1, exp), 10)
+        self.tamagotchi.level = min(max(1, exp), 10)
     }
 
     @IBAction func eatButtonClicked(_ sender: UIButton) {
         guard let text = inputTextFields[sender.tag].text, !text.isEmpty else {
             if sender.tag == 0{
-                self.damagochi.riceCount += 1
+                self.tamagotchi.riceCount += 1
             }else{
-                self.damagochi.waterCount += 1
+                self.tamagotchi.waterCount += 1
             }
             levelUp()
             //잘 먹었다는 문구 보여주기
@@ -185,17 +140,17 @@ class ViewController: UIViewController {
         //밥먹기
         if sender.tag == 0{
             if intValue > 99{
-                damagochiTextLabel.text = "\(damagochi.name)님 한번에 \(intValue)개의 밥은 먹을 수가 없어요.."
+                damagochiTextLabel.text = "\(tamagotchi.name)님 한번에 \(intValue)개의 밥은 먹을 수가 없어요.."
                 return
             }else{
-                self.damagochi.riceCount += intValue
+                self.tamagotchi.riceCount += intValue
             }
         }else if sender.tag == 1{
             if intValue > 49{
-                damagochiTextLabel.text = "\(damagochi.name)님 한번에 \(intValue)개의 물은 마실 수가 없어요.."
+                damagochiTextLabel.text = "\(tamagotchi.name)님 한번에 \(intValue)개의 물은 마실 수가 없어요.."
                 return
             }else{
-                self.damagochi.waterCount += intValue
+                self.tamagotchi.waterCount += intValue
             }
         }
         
